@@ -22,7 +22,7 @@
                     <v-list-item>
                         <v-list-item-title>Cost per Launch</v-list-item-title>
                         <v-list-item-subtitle>{{ formatCurrency(rocket.launch_cost)
-                            }}</v-list-item-subtitle>
+                        }}</v-list-item-subtitle>
                     </v-list-item>
                     <v-list-item>
                         <v-list-item-title>Country</v-list-item-title>
@@ -58,11 +58,9 @@ const rocket = computed(() => {
 });
 
 onMounted(() => {
-    if (rocketStore.rockets.length === 0) {
-        rocketStore.fetchRockets();
+    if (!rocket.value) {
+        rocketStore.fetchRocketsById(Number(route.params.id));
     }
 })
-
-
 
 </script>
